@@ -1,3 +1,5 @@
 archive
 sqlite/test.py
 sqlite/__pycache__/*
+visualize/test.ipynb
+visualize/main.py
