@@ -1,3 +1,3 @@
 archive
 sqlite/test.py
-sqlite/__pycache__
+sqlite/__pycache__/*
