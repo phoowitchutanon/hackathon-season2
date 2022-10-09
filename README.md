@@ -14,4 +14,5 @@
 2. ติดตั้ง library ตาม `requirement.txt`
 
 ## ตัวอย่างการ visualize
+![image](https://user-images.githubusercontent.com/57131784/194760975-baf8eb5c-796a-426e-9a1b-a8e75a62476c.png)
 
