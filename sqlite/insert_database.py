@@ -1,21 +1,10 @@
 import sqlite3
 import re
 from datetime import datetime
+from utils import xml_to_list , Clean_data
 
-def xml_to_list(xml_file):
-    props = ["EMPID","PASSPORT","FIRSTNAME","LASTNAME","GENDER","BIRTHDAY","NATIONALITY","HIRED","DEPT","POSITION"]
-
-    with open(xml_file) as f:
-      data = f.read()
-
-    datalist = []
-    for prop in props:
-        data_prop = re.findall(rf"<{prop}>(.*?)</{prop}>", data)
-        if prop in ["HIRED","BIRTHDAY"]:
-          data_prop = [datetime.strptime(datestring, '%d-%m-%Y').strftime('%Y-%m-%d') for datestring in data_prop]
-        datalist.append(data_prop)
-    datalist = list(zip(*datalist))
-    return datalist
+datalist = xml_to_list("../data-devclub-1.xml")
+datalist = Clean_data(datalist)
 
 def insert_database(xml_file):
     
@@ -24,7 +13,7 @@ def insert_database(xml_file):
 
     c = conn.cursor()
 
-    c.executemany("""INSERT INTO devclub VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",data)
+    c.executemany("""INSERT INTO devclub VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",datalist)
 
     conn.commit()
 

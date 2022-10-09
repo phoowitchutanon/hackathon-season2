@@ -148,15 +148,10 @@ def Clean_data(datalist: List[tuple]) -> List[tuple]:
     output: datalist
     """
     filtered_data = delete_anomaly_status(datalist)
-    print(filtered_data)
     filtered_data = filter_positions(filtered_data, ['Airhostess', 'Pilot', 'Steward'])
-    print(filtered_data)
     filtered_data = filter_hire_time(3, filtered_data)
-    print(filtered_data)
     filtered_data = remove_duplicate_employee_id(filtered_data)
-    print(filtered_data)
     filtered_data = remove_duplicate_passport(filtered_data)
-    print(filtered_data)
     return filtered_data
 
 
